@@ -114,13 +114,13 @@
 #include <callback.h>
 #include <taskwd.h>
 #include <epicsString.h>
+
+#include "epicsExport.h"
 #include "sCalcPostfix.h"
 #include "sCalcPostfixPvt.h"	/* define BAD_EXPRESSION */
-
 #define GEN_SIZE_OFFSET
 #include "transformRecord.h"
 #undef GEN_SIZE_OFFSET
-#include "epicsExport.h"
 
 #include <epicsVersion.h>
 #ifndef EPICS_VERSION_INT
@@ -272,7 +272,8 @@ static long getMacros(transformRecord *ptran)
 		if (transformRecordDebug >= 10) printf("pcomment[%d]='%s'\n", i, pcomment);
 		if (pcomment[0] == '$') {
 			macro->name[0] = pcomment[0];
-			for(j=1; j<COMMENT_SIZE-1 && isalnum((int)pcomment[j]); j++) {
+			/* for(j=1; j<COMMENT_SIZE-1 && isalnum((int)pcomment[j]); j++) { */
+			for(j=1; j<COMMENT_SIZE-1 && !isspace((int)pcomment[j]); j++) {
 				macro->name[j] = pcomment[j];
 			}
 			macro->name[j] = '\0';
@@ -392,8 +393,9 @@ static int convertExpression(transformRecord *ptran, char *dest, const char *src
 /********************************************************************************/
 
 static long 
-init_record(transformRecord *ptran, int pass)
+init_record(dbCommon *pcommon, int pass)
 {
+	transformRecord *ptran = (transformRecord *) pcommon;
 	int				i;
 	epicsInt32		*pcalcInvalid;
 	struct link		*pinlink, *poutlink;
@@ -502,8 +504,9 @@ init_record(transformRecord *ptran, int pass)
 }
 
 static long 
-process(transformRecord *ptran)
+process(dbCommon *pcommon)
 {
+	transformRecord *ptran = (transformRecord *) pcommon;
 	int				i, no_inlink, new_value, postfix_ok, same;
 	long			status;
 	struct link		*plink;
@@ -587,7 +590,7 @@ process(transformRecord *ptran)
 		if (((no_inlink && !new_value) || ptran->copt==transformCOPT_ALWAYS)
 				&& postfix_ok) {
 			Debug(15, "process: calculating for field %s\n", Fldnames[i]);
-			if (sCalcPerform(&ptran->a, 16, NULL,0, pval, NULL,0, prpcbuf)) {
+			if (sCalcPerform(&ptran->a, 16, NULL,0, pval, NULL,0, prpcbuf, ptran->prec)) {
 				recGblSetSevr(ptran, CALC_ALARM, INVALID_ALARM);
 				ptran->udf = TRUE;
 			}
@@ -622,7 +625,7 @@ process(transformRecord *ptran)
 
 
 static long 
-special(struct dbAddr *paddr, int after)
+special(const DBADDR *paddr, int after)
 {
 	int				i;
 	transformRecord	*ptran = (transformRecord *) (paddr->precord);
@@ -747,7 +750,7 @@ special(struct dbAddr *paddr, int after)
 }
 
 static long 
-get_precision(struct dbAddr *paddr, long *precision)
+get_precision(const DBADDR *paddr, long *precision)
 {
 	transformRecord *ptran = (transformRecord *) paddr->precord;
 	int fieldIndex = dbGetFieldIndex(paddr);

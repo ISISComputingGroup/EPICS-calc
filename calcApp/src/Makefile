@@ -5,6 +5,8 @@ include $(TOP)/configure/CONFIG
 #  ADD MACRO DEFINITIONS AFTER THIS LINE
 #=============================
 
+USR_CPPFLAGS += -DUSE_TYPED_RSET
+
 #=============================
 # xxxRecord.h will be created from xxxRecord.dbd
 
@@ -16,8 +18,16 @@ ifdef SSCAN
 	DBDINC += swaitRecord
 endif
 
+# publish headers for sCalc and aCalc engines
+INC += sCalcPostfix.h aCalcPostfix.h
+
 # <name>.dbd will be created from <name>Include.dbd, if it exists
 DBD_INSTALLS += calcSupport.dbd
+DBD_INSTALLS += calc.dbd
+
+ifdef SNCSEQ
+	DBD += editSseq.dbd
+endif
 
 #=============================
 
@@ -36,9 +46,14 @@ ifdef SSCAN
 	calc_SRCS += swaitRecord.c
 	calc_LIBS += sscan
 endif
+ifdef SNCSEQ
+	calc_SRCS += editSseq.st
+	calc_LIBS += seq pv
+endif
 
 calc_SRCS += interp.c
 calc_SRCS += arrayTest.c
+calc_SRCS += aCalcMonitorMem.c
 
 calc_LIBS += $(EPICS_BASE_IOC_LIBS)
 
@@ -68,10 +83,18 @@ swaitRecord$(OBJ): $(COMMON_DIR)/swaitRecord.h
 # mustn't do that.  Otherwise the ioc directory would inherit an expanded copy
 # of base.dbd from each support module.)
 
+# calc.dbd is exactly the same as calcSupport.dbd
+
+dbdlist = ../calcSupport_LOCAL.dbd
 ifdef SSCAN
-calcSupport.dbd: ../calcSupport_LOCAL.dbd ../calcSupport_withSSCAN.dbd
-	$(PERL) -MExtUtils::Command -e cat $^ > $@
-else
-calcSupport.dbd: ../calcSupport_LOCAL.dbd
-	$(PERL) -MExtUtils::Command -e cat $^ > $@
+dbdlist += ../calcSupport_withSSCAN.dbd
 endif
+ifdef SNCSEQ
+dbdlist += ../calcSupport_withSNCSEQ.dbd
+endif
+
+calcSupport.dbd: $(dbdlist)
+	$(PERL) -MExtUtils::Command -e cat $^ > $@
+
+calc.dbd: $(dbdlist)
+	$(PERL) -MExtUtils::Command -e cat $^ > $@
