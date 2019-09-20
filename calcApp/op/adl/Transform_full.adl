@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/calc/calcApp/op/adl/Transform_full.adl"
-	version=030102
+	name="/home/epics/support/calc/calcApp/op/adl/Transform_full.adl"
+	version=030109
 }
 display {
 	object {
-		x=410
-		y=414
+		x=867
+		y=371
 		width=710
 		height=490
 	}
@@ -1453,271 +1453,260 @@ rectangle {
 		chan="$(P)$(T).CAV"
 	}
 }
-composite {
+"text entry" {
 	object {
 		x=267
 		y=67
 		width=196
-		height=395
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=267
-				y=67
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCA$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=92
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCB$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=117
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCC$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=142
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCD$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=167
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCE$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=192
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCF$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=217
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCG$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=242
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCH$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=267
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCI$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=292
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCJ$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=317
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCK$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=342
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCL$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=367
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCM$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=392
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCN$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=417
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCO$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=267
-				y=442
-				width=196
-				height=20
-			}
-			control {
-				chan="$(P)$(T).CLCP$"
-				clr=14
-				bclr=51
-			}
-			format="string"
-			limits {
-			}
-		}
+	control {
+		chan="$(P)$(T).CLCA$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=92
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCB$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=117
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCC$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=142
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCD$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=167
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCE$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=192
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCF$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=217
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCG$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=242
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCH$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=267
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCI$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=292
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCJ$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=317
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCK$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=342
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCL$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=367
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCM$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=392
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCN$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=417
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCO$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=267
+		y=442
+		width=196
+		height=20
+	}
+	control {
+		chan="$(P)$(T).CLCP$"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
 	}
 }
 rectangle {
@@ -2634,7 +2623,7 @@ menu {
 composite {
 	object {
 		x=410
-		y=470
+		y=468
 		width=245
 		height=20
 	}
@@ -2643,7 +2632,7 @@ composite {
 		text {
 			object {
 				x=410
-				y=474
+				y=472
 				width=80
 				height=10
 			}
@@ -2656,7 +2645,7 @@ composite {
 		"text entry" {
 			object {
 				x=505
-				y=470
+				y=468
 				width=150
 				height=20
 			}
