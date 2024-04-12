@@ -3,10 +3,11 @@ O.*
 *.swp
 *BAK.adl
 bin/
-db/
+/db/
 dbd/
 html/
 include/
+iocsh/
 lib/
 templates/
 cdCommands
