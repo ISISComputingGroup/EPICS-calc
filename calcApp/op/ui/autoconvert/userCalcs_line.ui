@@ -85,16 +85,6 @@ caChoice &gt; QPushButton {
       padding: 1px;
 }
 
-/* when font specified, no font sizing is done any more,  font: 10pt; is not bad. You could Enable this when you converted from .adl files
-caRelatedDisplay  &gt; QPushButton {
-font: 10pt;
-}
-
-caShellCommand  &gt; QPushButton {
-font: 10pt;
-}
-*/
-
 caSlider::groove:horizontal {
 border: 1px solid #bbb;
 background: lightgrey;
@@ -200,7 +190,7 @@ border-radius: 2px;
                 <string>user Calc $(N);user Calc $(N) (full)</string>
             </property>
             <property name="files">
-                <string>userCalc.ui ;userCalc_full.ui </string>
+                <string>userCalc.adl;userCalc_full.adl</string>
             </property>
             <property name="args">
                 <string>P=$(P),N=$(N),C=userCalc$(N);P=$(P),N=$(N),C=userCalc$(N)</string>
@@ -319,7 +309,7 @@ border-radius: 2px;
                     <x>195</x>
                     <y>10</y>
                     <width>20</width>
-                    <height>9</height>
+                    <height>10</height>
                 </rect>
             </property>
             <property name="alignment">
@@ -361,7 +351,7 @@ border-radius: 2px;
                     <x>195</x>
                     <y>0</y>
                     <width>20</width>
-                    <height>9</height>
+                    <height>10</height>
                 </rect>
             </property>
             <property name="alignment">
